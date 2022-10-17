@@ -1,6 +1,8 @@
 import { useState } from "react";
 
 const Counter = (props) => {
+  console.log("Render Counter");
+
   // setCount is an asynchronous function.
   // Calls to this function are batched instead of run
   // one after the other
