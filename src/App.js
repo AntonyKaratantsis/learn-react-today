@@ -1,13 +1,7 @@
+import Counter from "./Counter";
+
 const App = () => {
-  return (
-    <>
-      <div>
-        <button>-</button>
-        <span> 0 </span>
-        <button>+</button>
-      </div>
-    </>
-  );
+  return <Counter initialCount="0" />;
 };
 
 export default App;
