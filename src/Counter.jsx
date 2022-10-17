@@ -1,6 +1,12 @@
 import { useState } from "react";
 
 const Counter = ({ initialCount }) => {
+  // You might ask: how in the world is my current state saved by React??
+  // React counts on us calling Hooks at the exact same order every
+  // single time and it relies on them being at the very top level of
+  // our function component. 
+  // That's why HOOKS CAN NOT BE CALLED CONDITIONALLY (ifs, loops, functions etc)
+
   // setCount is an asynchronous function.
   // Calls to this function are batched instead of run
   // one after the other
