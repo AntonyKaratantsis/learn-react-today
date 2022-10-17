@@ -2,7 +2,7 @@ const Counter = (props) => {
   return (
     <div>
       <button>-</button>
-      <span> 0 </span>
+      <span> {props.initialCount} </span>
       <button>+</button>
     </div>
   );

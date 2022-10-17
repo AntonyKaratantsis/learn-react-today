@@ -1,7 +1,7 @@
 import Counter from "./Counter";
 
 const App = () => {
-  return <Counter initialCount="0" />;
+  return <Counter initialCount={0} />;
 };
 
 export default App;
