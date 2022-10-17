@@ -11,6 +11,10 @@ const Counter = (props) => {
   // depends on the previous state
   const clickHandler = (amount) => setCount((prevCount) => prevCount + amount);
 
+  // To demonstrate the error that happens due to the asynchronous nature of useState,
+  // switch the handlers and call clickhandler twice on each button click
+  //    const clickHandler = (amount) => setCount(count + amount);
+
   return (
     <div>
       <button onClick={() => clickHandler(-1)}>-</button>
