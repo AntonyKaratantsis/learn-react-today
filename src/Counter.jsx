@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ThemeContext } from "./App";
 
 const Counter = ({ initialCount }) => {
@@ -13,6 +13,7 @@ const Counter = ({ initialCount }) => {
   // Calls to this function are batched instead of run
   // one after the other
   const [count, setCount] = useState(initialCount);
+  const style = useContext(ThemeContext);
 
   // We pass a callback function as an argument is setCount, instead
   // of passing count + amount as a value, because the operation
@@ -20,15 +21,11 @@ const Counter = ({ initialCount }) => {
   const clickHandler = (amount) => setCount((prevCount) => prevCount + amount);
 
   return (
-    <ThemeContext.Consumer>
-      {(style) => (
-        <div>
-          <button onClick={() => clickHandler(-1)}>-</button>
-          <span style={style}> {count} </span>
-          <button onClick={() => clickHandler(+1)}>+</button>
-        </div>
-      )}
-    </ThemeContext.Consumer>
+    <div>
+      <button onClick={() => clickHandler(-1)}>-</button>
+      <span style={style}> {count} </span>
+      <button onClick={() => clickHandler(+1)}>+</button>
+    </div>
   );
 };
 
