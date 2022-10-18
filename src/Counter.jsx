@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { ThemeContext } from "./App";
 
 const Counter = ({ initialCount }) => {
+  console.log("Counter Render");
   // You might ask: how in the world is my current state saved by React??
   // React counts on us calling Hooks at the exact same order every
   // single time and it relies on them being at the very top level of
-  // our function component. 
+  // our function component.
   // That's why HOOKS CAN NOT BE CALLED CONDITIONALLY (ifs, loops, functions etc)
 
   // setCount is an asynchronous function.
@@ -18,11 +20,15 @@ const Counter = ({ initialCount }) => {
   const clickHandler = (amount) => setCount((prevCount) => prevCount + amount);
 
   return (
-    <div>
-      <button onClick={() => clickHandler(-1)}>-</button>
-      <span> {count} </span>
-      <button onClick={() => clickHandler(+1)}>+</button>
-    </div>
+    <ThemeContext.Consumer>
+      {(style) => (
+        <div>
+          <button onClick={() => clickHandler(-1)}>-</button>
+          <span style={style}> {count} </span>
+          <button onClick={() => clickHandler(+1)}>+</button>
+        </div>
+      )}
+    </ThemeContext.Consumer>
   );
 };
 

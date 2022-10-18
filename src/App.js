@@ -4,6 +4,7 @@ import Counter from "./Counter";
 export const ThemeContext = createContext();
 
 const App = () => {
+  console.log("App render");
   const [theme, setTheme] = useState("red");
 
   return (
