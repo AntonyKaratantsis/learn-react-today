@@ -8,6 +8,10 @@ const App = () => {
   const [theme, setTheme] = useState("red");
 
   return (
+    // Using context API we don't need to pass value
+    // as prop to the counter components. This is
+    // very useful for use cases where we need to pass
+    // something to deeply nested components
     <ThemeContext.Provider value={{ backgroundColor: theme }}>
       <p>Counter 1</p>
       <Counter initialCount={0} />
