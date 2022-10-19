@@ -5,7 +5,7 @@ export const ThemeContext = createContext();
 
 const App = () => {
   console.log("App render");
-  const [theme, setTheme] = useState("red");
+  const [theme, setTheme] = useState("green");
 
   return (
     // Using context API we don't need to pass value
