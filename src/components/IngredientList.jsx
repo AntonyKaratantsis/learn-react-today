@@ -2,9 +2,9 @@ import React from "react";
 import Ingredient from "./Ingredient";
 
 export default function IngredientList({ ingredients }) {
-  const ingredientList = ingredients.map((i) => (
-    <Ingredient key={i.id} {...i} />
+  const ingredientElements = ingredients.map((ingredient) => (
+    <Ingredient key={ingredient.id} {...ingredient} />
   ));
 
-  return <>{ingredientList}</>;
+  return <div className="ingredient-grid">{ingredientElements}</div>;
 }
