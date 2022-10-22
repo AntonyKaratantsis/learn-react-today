@@ -7,12 +7,25 @@
 *,
 *::before,
 *::after {
-  font-family: "Gotham Rounded";
-  box-sizing: content-box;
+  box-sizing: border-box;
 }
 
-html{
-    font-size: 1.1em;
+button,
+textarea,
+optgroup,
+input,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+html {
+  font-family: "Gotham Rounded";
+  font-size: 1.1em;
 }
 
 body {
