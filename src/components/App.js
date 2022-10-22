@@ -25,9 +25,17 @@ const App = () => {
     setRecipes([...recipes, newRecipe]);
   };
 
+  const handleRecipeDelete = (id) => {
+    setRecipes(recipes.filter((r) => r.id !== id));
+  };
+
   return (
     <>
-      <RecipeList recipes={recipes} handleRecipeAdd={handleRecipeAdd}/>
+      <RecipeList
+        recipes={recipes}
+        handleRecipeAdd={handleRecipeAdd}
+        handleRecipeDelete={handleRecipeDelete}
+      />
     </>
   );
 };
