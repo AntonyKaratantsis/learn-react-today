@@ -1,10 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import IngredientList from "./IngredientList";
 import { RecipeContext } from "./App";
 
 export default function Recipe(props) {
   const { id, name, cookTime, servings, instructions, ingredients } = props;
   const { handleRecipeDelete } = useContext(RecipeContext);
+
+  useEffect(() => {
+    console.log("Recipe render");
+    // The returned function is called when the component is unmounted
+    // This functionallity allows us to clean things up
+    // when a component is removed from our app. E.g,
+    // If we had assigned an event listener we could undo it here...
+    // But, an important quirk to know is that the return function is actually
+    // called every subsequent time after the first call of this use effect!!
+    return () => {
+      console.log("Recipe unmounted!")
+    }
+  }, []);
 
   return (
     <div className="recipe">
