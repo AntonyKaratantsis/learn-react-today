@@ -2,6 +2,7 @@ import { createContext, useState, useEffect } from "react";
 import { v4 } from "uuid";
 import RecipeList from "./RecipeList";
 import "../css/app.css";
+import RecipeEdit from "./RecipeEdit";
 
 export const RecipeContext = createContext();
 const LOCAL_STORAGE_KEY = "cookingWithReact.recipes";
@@ -11,7 +12,7 @@ const App = () => {
 
   // The first time our page loads (and at every refresh)
   // we retrieve saved recipes from localStorage.
-  // If they exist in localStorage, we retrieve them 
+  // If they exist in localStorage, we retrieve them
   // and set our state to them as an initial value
   useEffect(() => {
     const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -58,6 +59,7 @@ const App = () => {
     <>
       <RecipeContext.Provider value={recipeContextValue}>
         <RecipeList recipes={recipes} />
+        <RecipeEdit />
       </RecipeContext.Provider>
     </>
   );
