@@ -4,13 +4,24 @@ import RecipeList from "./RecipeList";
 import "../css/app.css";
 
 export const RecipeContext = createContext();
+const LOCAL_STORAGE_KEY = "cookingWithReact.recipes";
 
 const App = () => {
   const [recipes, setRecipes] = useState(sampleRecipes);
 
+  // The first time our page loads (and at every refresh)
+  // we retrieve saved recipes from localStorage.
+  // If they exist in localStorage, we retrieve them 
+  // and set our state to them as an initial value
   useEffect(() => {
-    console.log("Rendered");
+    const recipeJSON = localStorage.getItem(LOCAL_STORAGE_KEY);
+    if (recipeJSON != null) setRecipes(JSON.parse(recipeJSON));
   }, []);
+
+  // Everytime our recipe list changes, it is saved in Local Storage
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(recipes));
+  }, [recipes]);
 
   const handleRecipeAdd = () => {
     const newRecipe = {
