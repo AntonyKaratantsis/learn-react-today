@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { v4 } from "uuid";
 import RecipeList from "./RecipeList";
 import "../css/app.css";
@@ -7,6 +7,10 @@ export const RecipeContext = createContext();
 
 const App = () => {
   const [recipes, setRecipes] = useState(sampleRecipes);
+
+  useEffect(() => {
+    console.log("Rendered");
+  }, []);
 
   const handleRecipeAdd = () => {
     const newRecipe = {
