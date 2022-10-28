@@ -4,7 +4,8 @@ import { RecipeContext } from "./App";
 
 export default function Recipe(props) {
   const { id, name, cookTime, servings, instructions, ingredients } = props;
-  const { handleRecipeDelete } = useContext(RecipeContext);
+  const { handleRecipeEditClick, handleRecipeDelete } =
+    useContext(RecipeContext);
 
   useEffect(() => {
     console.log("Recipe render");
@@ -15,8 +16,8 @@ export default function Recipe(props) {
     // But, an important quirk to know is that the return function is actually
     // called every subsequent time after the first call of this use effect!!
     return () => {
-      console.log("Recipe unmounted!")
-    }
+      console.log("Recipe unmounted!");
+    };
   }, []);
 
   return (
@@ -24,7 +25,14 @@ export default function Recipe(props) {
       <div className="recipe__header">
         <h3 className="recipe__title">{name}</h3>
         <div>
-          <button className="btn btn--primary mr-1">Edit</button>
+          <button
+            className="btn btn--primary mr-1"
+            onClick={() => {
+              handleRecipeEditClick(props);
+            }}
+          >
+            Edit
+          </button>
           <button
             className="btn btn--danger"
             onClick={() => handleRecipeDelete(id)}

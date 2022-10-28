@@ -1,14 +1,15 @@
 import { createContext, useState, useEffect } from "react";
 import { v4 } from "uuid";
 import RecipeList from "./RecipeList";
-import "../css/app.css";
 import RecipeEdit from "./RecipeEdit";
+import "../css/app.css";
 
 export const RecipeContext = createContext();
 const LOCAL_STORAGE_KEY = "cookingWithReact.recipes";
 
 const App = () => {
   const [recipes, setRecipes] = useState(sampleRecipes);
+  const [recipeToEdit, setRecipeToEdit] = useState(null);
 
   // The first time our page loads (and at every refresh)
   // we retrieve saved recipes from localStorage.
@@ -39,12 +40,29 @@ const App = () => {
         },
       ],
     };
-
     setRecipes([...recipes, newRecipe]);
+    setRecipeToEdit(newRecipe);
   };
 
   const handleRecipeDelete = (id) => {
     setRecipes(recipes.filter((r) => r.id !== id));
+    if (recipeToEdit.id === id) setRecipeToEdit(null);
+  };
+
+  const handleRecipeUpdate = (recipe) => {
+    const idx = recipes.findIndex((r) => r.id === recipe.id);
+    const newRecipes = [...recipes];
+    newRecipes[idx] = recipe;
+    setRecipes(newRecipes);
+    setRecipeToEdit(recipe);
+  };
+
+  const handleRecipeEditClick = (recipe) => {
+    setRecipeToEdit(recipe);
+  };
+
+  const handleEditCloseClick = () => {
+    setRecipeToEdit(null);
   };
 
   const recipeContextValue = {
@@ -53,13 +71,16 @@ const App = () => {
     // Same as above, nice shorthand!!!
     handleRecipeAdd,
     handleRecipeDelete,
+    handleRecipeUpdate,
+    handleRecipeEditClick,
+    handleEditCloseClick
   };
 
   return (
     <>
       <RecipeContext.Provider value={recipeContextValue}>
         <RecipeList recipes={recipes} />
-        <RecipeEdit />
+        <RecipeEdit recipe={recipeToEdit} />
       </RecipeContext.Provider>
     </>
   );
