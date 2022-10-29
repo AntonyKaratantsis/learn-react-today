@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { v4 } from "uuid";
 import RecipeIngredient from "./RecipeIngredient";
 import { RecipeContext } from "./App";
 
@@ -76,12 +77,25 @@ export default function RecipecEdit({ recipe }) {
         <div>Name</div>
         <div>Amount</div>
         <div></div>
-        {recipe.ingredients.map(({ id, name, amount }) => (
-          <RecipeIngredient key={id} name={name} amount={amount} />
+        {recipe.ingredients.map((ingredient) => (
+          <RecipeIngredient
+            key={ingredient.id}
+            recipe={recipe}
+            ingredient={ingredient}
+          />
         ))}
       </div>
       <div className="recipe-edit__add-ingredient-container">
-        <button className="btn btn--primary">Add Ingredient</button>
+        <button className="btn btn--primary" onClick={() => {
+          const newIngredient = {
+            id : v4(),
+            name: "",
+            amount: ""
+          }
+          const newRecipe = {...recipe};
+          newRecipe.ingredients.push(newIngredient);
+          handleRecipeUpdate(newRecipe);
+        }}>Add Ingredient</button>
       </div>
     </div>
   ) : (
