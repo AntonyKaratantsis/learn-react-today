@@ -88,25 +88,25 @@ const App = () => {
 
 const sampleRecipes = [
   {
-    id: 1,
+    id: "a5e7e80f-8d37-4eb8-a3e7-a2801dfe4a55",
     name: "Plain Chicken",
     servings: 3,
     cookTime: "1:45",
     instructions: `1. Put salt on chicken\n2. Put chicken in oven\n3. Eat chicken`,
     ingredients: [
-      { id: 1, name: "Chicken", amount: "2 pounds" },
-      { id: 2, name: "Salt", amount: "1 tbsp" },
+      { id: "1d4cc9ec-a7cb-417b-a623-f81b4006d3a5", name: "Chicken", amount: "2 pounds" },
+      { id: "258fce91-232b-49fe-b3f1-d0e5fd1f834a", name: "Salt", amount: "1 tbsp" },
     ],
   },
   {
-    id: 2,
+    id: "c96974da-9f65-4325-aa8d-e8da120c8d2f",
     name: "Plain Pork",
     servings: 5,
     cookTime: "0:45",
     instructions: "1. Put paprika on pork\n2. Put pork in oven\n3. Eat pork",
     ingredients: [
-      { id: 1, name: "Pork", amount: "3 pounds" },
-      { id: 2, name: "Paprika", amount: "2 tbsp" },
+      { id: "ae78818a-cb7a-421d-b10d-1e79f5a6b9ba", name: "Pork", amount: "3 pounds" },
+      { id: "17211727-41eb-4777-9e61-9d5f990e55c9", name: "Paprika", amount: "2 tbsp" },
     ],
   },
 ];
